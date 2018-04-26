@@ -4,7 +4,7 @@ class ToppagesController < ApplicationController
 
     #EventWorker.perform_in(1)
     #EventWorker.perform_in 1.minute, 10
-    EventWorker.perform_async('------------------------------処理開始------------------------------')
+#    EventWorker.perform_async('------------------------------処理開始------------------------------')
     #EventWorker.perform_async @event.id
 
     #ユーザープロフィールデータが未入力なら、プロフィールページで入力する
