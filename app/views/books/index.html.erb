@@ -1,0 +1,26 @@
+<%= render 'layouts/navbar' %>
+<h1>申請イベント一覧</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th class="text-left">タイトル</th>
+    <th class="text-left">メモ</th>
+    <th class="text-left">作成者</th>
+    <th class ="text-right">日付</th>
+  </tr>
+
+<% if @book_events.count > 0 %>
+  <% @book_events.each do |event| %>
+    <tr>
+      <td><%= link_to event.title, event_path(event.id) %></td>
+      <td><%= link_to event.content.truncate(30), event_path(event.id) %></td></td>
+      <td><%= link_to get_user_name(event.user_id), profile_path(event.user_id) %></td></td>
+      <td><%= event.start_datetime %></td>
+    </tr>
+  <% end %>
+<% else %>
+  <center>申込みをしているイベントはありません。</center>
+<% end %>
+</table>
+
+<%= paginate @book_events %>

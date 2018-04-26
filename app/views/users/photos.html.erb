@@ -1,0 +1,45 @@
+<%= render 'layouts/navbar' %>
+<div class="container">
+  <div class="col-md-3">
+    <!-- vertical-navbar -->
+    <%#= render 'partial/verticalnavbar'%>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:24px;">プロフィール写真の編集</span>
+        </div>
+      </div>
+
+      <div class="panel-body">
+
+        <!-- アップロード可能枚数の上限-->
+        <% if @user.user_photos.count >= 3 %>
+          画像の登録は3枚まで可能です。
+        <% end %>
+
+        <% @user.user_photos.each do |photo| %>
+          <%= image_tag photo.image.url(:medium) %>
+          <%= link_to "To Main", user_photos_priority_path(photo.id), data: { confirm: "この画像をメイン画像にしますか？" }, class: 'btn btn-primary btn-xs' %>
+          <%= link_to "Delete", photo, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-danger btn-xs' %>
+        <% end %>
+
+        <%= form_for @user_photos, :html => { multipart: true } do |photo| %>
+          <div class="fallback">
+            <div class="show-image">
+              <%= photo.file_field :image %>
+            </div>
+
+            <% if @user.user_photos.count >= 3 %>
+              <%= photo.submit "画像を登録", disabled: 'true' %>
+            <% else %>
+              <%= photo.submit "画像を登録" %>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

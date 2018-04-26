@@ -1,0 +1,108 @@
+<%= render 'layouts/navbar' %>
+
+<% if @header_prefecture %><h2><%= @header_prefecture %></h2><% end %>
+<% if @header_city %><h2><%= @header_city %></h2><% end %>
+<% if @header_category %><h2><%= @header_category %></h2><% end %>
+
+<%#= render '/layouts/search' %>
+
+<% path = get_form_path %>
+
+<div class="search">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <h3>イベント検索</h3>
+      <%= form_tag(path, method: :get, class: 'form-inline') do %>
+        <div class="form-group">
+          キーワード : <%= text_field_tag :keyword, @keyword, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <label>日付 : </label>
+          <%= date_field_tag :event_date, @event_date, class: 'form-control' %>
+        </div>
+
+        <%= check_box_tag :only_holiday, :only_holiday, @only_holiday %> <%= label_tag :only_holiday, '休日のイベントのみ表示' %>
+
+        <%= submit_tag '検索', class: 'btn btn-success' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+
+<%= form_tag("/events/new", method: :get, class: 'form-inline') do %>
+  <button type="submit" class="btn btn-primary">イベント作成</button>
+  <%= hidden_field_tag :pref_id, @pref_id %>
+  <%= hidden_field_tag :city_id, @city_id %>
+  <%= hidden_field_tag :cat_id, @cat_id %>
+<% end %>
+
+<table class="table table-striped">
+  <tr>
+    <th class="text-left">タイトル</th>
+    <th class="text-left">作成者</th>
+    <th class="text-left">日付</th>
+  </tr>
+
+<% if @events %>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= link_to event.title, event_path(event.id) %></td>
+      <td><%= link_to get_user_name(event.user_id), profile_path(event.user_id) %></td></td>
+      <td><%= event.start_datetime.strftime("%m月%d日 %H時%M分") + ' 〜 ' + event.end_datetime.strftime("%m月%d日 %H時%M分") %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+
+<% if @events != nil %>
+  <%= paginate @events %>
+<% end %>
+
+<!-- カレンダー表示 -->
+<%= javascript_tag do %>
+  window.event_datas = <%= raw @datas.to_json %>;
+<% end %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div id="calendar"></div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+	  市町村 一覧
+	</div>
+	<div class="panel-body">
+
+	  <!-- 都道府県 or 市町村を取得 -->
+	  <% link_locations = link_location_and_category(@prefectures, @cities, @categories, 'location') %>
+
+	  <% link_locations.each do |val| %>
+	    <%= val + " |" %>
+	  <% end %>
+
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+	  カテゴリ 一覧
+	</div>
+	<div class="panel-body">
+
+	  <!-- カテゴリーを取得 -->
+	  <% link_categories = link_location_and_category(@prefectures, @cities, @categories, 'category') %>
+
+	  <% link_categories.each do |val| %>
+	    <%= val + " |"  %>
+	  <% end %>
+
+	</div>
+</div>

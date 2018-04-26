@@ -1,0 +1,26 @@
+<%= render 'layouts/navbar' %>
+
+<div class="container">
+  <div class="col-md-3">
+    <!-- vertical-navbar -->
+    <%= render 'partial/verticalnavbar'%>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:24px;">公開の設定</span>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for @event do |f| %>
+          <div class="actions">
+            <%= f.hidden_field :id, value: @event.id %>
+            <%= f.submit "公開する", class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<%= render 'layouts/navbar' %>
+<div class="container">
+  <div class="col-md-3">
+    <!-- vertical-navbar -->
+    <%= render 'partial/verticalnavbar'%>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:24px;">基本データの編集</span>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for @event do |f| %>
+          <div class="row">
+            <div class="col-md-12 select">
+              <div class="form-group">
+                <label>イベント名</label>
+                <%= f.text_field :title, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-md-12 select">
+              <div class="form-group">
+                <label>開始時刻</label>
+                <%= f.text_field :start_datetime, class: 'form-control', id: 'datetimepicker_start' %>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-md-12 select">
+              <div class="form-group">
+                <label>終了時刻</label>
+                <%= f.text_field :end_datetime, class: 'form-control', id: 'datetimepicker_end' %>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-md-12 select">
+              <div class="form-group">
+                <label>募集人数</label>
+                <%= f.text_field :accept_user_limit, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-md-12 select">
+              <div class="form-group">
+                <label>金額</label>
+                <%= f.text_field :price, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <br>
+
+<!--
+          <div class="row">
+            <div class="col-md-12 select">
+              <div class="form-group">
+                <label>都道府県</label>
+                <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,
+                  {:include_blank => true, id: 'prefecture'},
+                     {:onchange => "update_pref(this.value, 'event');"}
+                %>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-md-12 select">
+              <div class="form-group">
+                <label>市町村</label>
+                <%= f.collection_select :city_id, City.all, :id, :name, :include_blank => false %>
+              </div>
+            </div>
+          </div>
+          <br>
+-->
+          <div class="actions">
+            <%= f.hidden_field :id, value: @event.id %>
+            <%= f.submit "更新", class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

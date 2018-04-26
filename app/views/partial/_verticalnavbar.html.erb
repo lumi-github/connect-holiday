@@ -1,0 +1,43 @@
+<div class="sidebar-nav">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+        <label>他の項目を編集する</label>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+      <ul class="nav navbar-nav">
+
+        <% if controller.controller_name == "events" %>
+          <li class="<%= 'active' if controller.action_name == "basics" %> event-checked" id = "nav-basics">
+            <%= link_to "基本事項", manage_event_basics_path(@event) %>
+          </li>
+
+          <li class="<%= 'active' if controller.action_name == "comment" %>" id = "nav-comment" >
+            <%= link_to "コメント", manage_event_comment_path(@event) %>
+          </li>
+
+          <li class="<%= 'active' if controller.action_name == "address" %>" id = "nav-address">
+            <%= link_to "住所情報", manage_event_address_path(@event) %>
+          </li>
+          <li class="<%= 'active' if controller.action_name == "price" %>" id = "nav-price">
+            <%= link_to "料金", manage_event_price_path(@event) %>
+          </li>
+          <li class="<%= 'active' if controller.action_name == "photos" %>" id = "nav-photos">
+            <%= link_to "写真", manage_event_photos_path(@event),data:{no_turbolink: true} %>
+          </li>
+          <li class="<%= 'active' if controller.action_name == "option" %>" id = "nav-option">
+            <%= link_to "オプション", manage_event_option_path(@event) %>
+          </li>
+          <li class="<%= 'active' if controller.action_name == "bankaccount" %>" id = "nav-bankaccount">
+            <%= link_to "受取口座情報", manage_event_bankaccount_path(@event) %>
+          </li>
+          <li class="<%= 'active' if controller.action_name == "publish" %>" id = "nav-publish">
+            <%= link_to "公開", manage_event_publish_path(@event) %>
+          </li>
+        <% end %>
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>

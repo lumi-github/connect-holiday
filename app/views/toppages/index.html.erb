@@ -1,0 +1,89 @@
+<%= @timees %>
+
+<%= render 'layouts/navbar' %>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <h1 class="display-3">Hello, world!</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%#= render '/layouts/search' %>
+
+<% path = get_form_path %>
+
+<div class="search">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <%= form_tag(events_index_path, method: :get, class: 'form-inline') do %>
+        <div class="recipe-container">
+          <div>
+            <%= text_field_tag :keyword, @keyword, class: 'form-control', placeholder: 'イベントの検索 : キーワードを入力して下さい', size: 80 %>
+          </div>
+          <div>
+            <%= submit_tag '検索', class: 'btn btn-success' %>
+          </div>
+        </div>
+<!--
+        <div class="form-group">
+          <label>日付 : </label>
+          <%= date_select :event_date, @event_date, class: 'form-control' %>
+        </div>
+-->
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<br />
+
+
+  <h1>
+    <div class="concept-message">
+      <div class="row">
+          <div class="col-md-4 col-xs-12 concept-frame">
+            <p id="concept-1">connect HOLIDAY</p>
+          </div>
+          <div class="col-md-4 col-xs-12 concept-frame">
+            <p id="concept-2">connect PEOPLE</p>
+          </div>
+          <div class="col-md-4 col-xs-12 concept-frame">
+            <p id="concept-3">have a fun HOBBY</p>
+          </div>
+      </div>
+    </div>
+  </h1>
+
+<br />
+<br />
+
+<div class="panel panel-default">
+	<div class="panel-heading text-center">
+	  都道府県 一覧
+	</div>
+
+	<div class="panel-body">
+    <% @prefectures.each do |prefecture| %>
+      <%= link_to prefecture.name, pref_events_path(prefecture.id) %> |
+    <% end %>
+	</div>
+
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading text-center">
+	  カテゴリ 一覧
+	</div>
+
+	<div class="panel-body">
+    <% @categories.each do |category| %>
+      <%= link_to category.name, cat_events_path(category.id) %> |
+    <% end %>
+	</div>
+
+</div>

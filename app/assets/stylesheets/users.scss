@@ -1,0 +1,21 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+td.fc-day {
+  cursor: pointer;
+}
+
+.follow-list{
+  list-style: none;
+}
+
+.follow-user-img {
+  height: 100px;
+  width: 100px;
+}
+
+.event-img {
+  height: 300px;
+  width: 380px;
+}

@@ -1,0 +1,78 @@
+-- MySQL dump 10.13  Distrib 5.7.20, for osx10.13 (x86_64)
+--
+-- Host: localhost    Database: connect-holiday_development
+-- ------------------------------------------------------
+-- Server version	5.7.20
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `encrypted_password` varchar(255) NOT NULL DEFAULT '',
+  `reset_password_token` varchar(255) DEFAULT NULL,
+  `reset_password_sent_at` datetime DEFAULT NULL,
+  `remember_created_at` datetime DEFAULT NULL,
+  `sign_in_count` int(11) NOT NULL DEFAULT '0',
+  `current_sign_in_at` datetime DEFAULT NULL,
+  `last_sign_in_at` datetime DEFAULT NULL,
+  `current_sign_in_ip` varchar(255) DEFAULT NULL,
+  `last_sign_in_ip` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `provider` varchar(255) DEFAULT NULL,
+  `uid` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `gender` int(11) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `comment` text,
+  `admin` tinyint(1) DEFAULT NULL,
+  `prefecture_id` int(11) DEFAULT NULL,
+  `city_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_users_on_email` (`email`),
+  UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`),
+  KEY `index_users_on_prefecture_id` (`prefecture_id`),
+  KEY `index_users_on_city_id` (`city_id`),
+  CONSTRAINT `fk_rails_15bb13b679` FOREIGN KEY (`prefecture_id`) REFERENCES `prefectures` (`id`),
+  CONSTRAINT `fk_rails_9c7442481a` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'lumi.xperia@gmail.com','$2a$11$gZqQa0yizFyX4Jk3Tr5gG.7Dqmcost8EIjb9VPhQFjH0Qw/wtq4vi',NULL,NULL,NULL,1,'2017-11-16 09:17:24','2017-11-16 09:17:24','127.0.0.1','127.0.0.1','2017-11-16 09:17:24','2017-11-16 09:19:35','facebook','1116423485160531','kazuyanakajima',1,'1986-08-04','つぶやき','コメント',NULL,15,15226),(2,'test@gmail.com','$2a$11$abPFIfrOsxSaqtUOHkls3.gRnldEHP3fI2qgfk.FET9sHmvEorQKO',NULL,NULL,NULL,1,'2017-11-16 09:20:18','2017-11-16 09:20:18','127.0.0.1','127.0.0.1','2017-11-16 09:20:18','2017-11-16 09:20:56',NULL,NULL,'test',1,'1989-01-01','tubuyaki','comment',NULL,15,15226),(3,'test2@gmail.com','$2a$11$9NgofzGCtW1M2/foiUGNX.IM0VNSDSE6SUTRSpwKNKPT2Eq1z.2ZW',NULL,NULL,NULL,1,'2017-11-16 09:21:37','2017-11-16 09:21:37','127.0.0.1','127.0.0.1','2017-11-16 09:21:37','2017-11-16 09:22:09',NULL,NULL,'test2',1,'1989-01-01','つぶやきーー','こめんとーーー',NULL,15,15226),(4,'test3@gmail.com','$2a$11$3AhHVJ..VMKMjzYPXvN4rOxy5eX8/VJEVZbieZftmcRKD4fRQC14e',NULL,NULL,NULL,1,'2017-11-16 09:22:32','2017-11-16 09:22:32','127.0.0.1','127.0.0.1','2017-11-16 09:22:32','2017-11-16 09:23:04',NULL,NULL,'test3',1,'1989-01-01','tubuyaki-','coment-',NULL,15,15226),(5,'test4@gmail.com','$2a$11$L5Idygh3CfSqvJOf/VZZ1.dKJ.iMlFOLvfMTXjKm6cD.kXXEnfsTG',NULL,NULL,NULL,1,'2017-11-16 09:23:33','2017-11-16 09:23:33','127.0.0.1','127.0.0.1','2017-11-16 09:23:33','2017-11-16 09:24:00',NULL,NULL,'test4',1,'1995-05-10','tubyaki','comment',NULL,15,15226);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-11-16 18:26:08

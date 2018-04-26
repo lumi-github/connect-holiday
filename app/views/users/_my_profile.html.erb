@@ -1,0 +1,129 @@
+<%# @user.user_photos.each do |photo| %>
+  <%#= image_tag photo.image %>
+<%# end %>
+
+<div class="row">
+  <div class="col-md-4 col-sm-4 bb">
+    <%= link_to 'プロフィール画像登録', manage_user_photos_path(@user) %>
+
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <% i=0 %>
+        <% @user.user_photos.each do |pic| %>
+          <% if i==0 %>
+            <div class="item active">
+          <% else %>
+            <div class="item">
+          <% end %>
+            <%#= image_tag pic.image.url(:medium) %>
+            <img alt="" src="<%= pic.image.url(:medium) %>">
+          </div>
+          <% i = i+1 %>
+        <% end %>
+      </div>
+
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="col-md-4 col-sm-4 bb">
+    <h3>つぶやき</h3>
+    asdfasdfas
+    <br>
+    asdfasdfasd<br>
+  </div>
+
+  <div class="col-md-4 col-sm-4 bb">
+    <!-- カレンダー表示 -->
+    <center><%= @user.name %>さんの休みカレンダー<br /></cener>
+    <%= javascript_tag do %>
+      window.event_datas = <%= raw @datas.to_json %>;
+    <% end %>
+
+    <div id="calendar_my_holiday"></div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 col-sm-3 col-frame">
+    <h3>フォローユーザー</h3>
+    <ul class="follow-list">
+      <% if current_user.follow_users %>
+        <% current_user.follow_users.each do |user| %>
+          <% if user.user_photos.first != nil %>
+          <li>
+            <%= link_to image_tag(user.user_photos.first.image.url(:thumb), { :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %>
+            <!--<img class="follow-user-img" alt="" src="<%= user.user_photos.first.image.url(:medium) %>" />-->
+          <% else %>
+          <li>
+            <img class="follow-user-img" alt="" src=<%= "/images/no_image_user.png" %> />
+          <% end %>
+          <div class=""><%= link_to user.name + 'さん', profile_path(user.id)%><br /></div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-frame">
+    <table class="table">
+      <tr><td>性別:</td><td><%= get_gendar(@user.gender) %></td></tr>
+      <tr><td>年齢:</td><td><%= get_age(@user.birthday) %></td></tr>
+      <tr><td>都道府県:</td><td><%= get_prefecture_name(@user.prefecture_id) %></td></tr>
+      <tr><td>市町村:</td><td><%= get_city_name(@user.city_id) %></td></tr>
+    </table>
+  </div>
+
+  <div class="col-md-5 col-sm-5 col-frame">
+    <table class="table" style="table-layout:fixed;width:100%;">
+      <th><p>自己紹介文</p></th>
+      <tr><td class="long-text"><%= simple_format(@user.comment) %></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h1>オーナーイベント一覧</h1>
+
+    <div class="owner-events">
+      <table class="table table-striped">
+        <tr>
+          <th class="text-left">タイトル</th>
+          <th class="text-left">作成者</th>
+          <th class="text-left">日付</th>
+          <th class="text-left">状態</th>
+        </tr>
+
+      <% if @my_events %>
+        <% @my_events.each do |event| %>
+          <tr>
+            <td><%= link_to event.title, event_path(event.id) %></td>
+            <td><%= link_to get_user_name(event.user_id), profile_path(event.user_id) %></td></td>
+            <td><%= event.start_datetime %></td>
+            <td>
+              <% if event.state == false %>
+                <%= link_to '編集する', manage_event_basics_path(event.id), class: 'btn btn-danger' %>
+              <% else %>
+                <button class="btn btn-info disabled">公開中</button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

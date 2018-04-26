@@ -1,0 +1,62 @@
+ここがプロフィール入力画面
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@user, url: init_profile_update_user_path) do |f| %>
+
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :name, 'ニックネーム' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <label for="user_gender">性別</label>
+          <%= f.select :gender, [['男性','1'],['女性','1']], {prompt:'選択して下さい'}, {required: 'true'} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :prefecture_id, '都道府県' %>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,
+               {:include_blank => true, id: 'prefecture'},
+               {:onchange => "update_pref(this.value, 'user');"}
+          %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :city_id, '市町村' %>
+          <%= f.collection_select :city_id, City.all, :id, :name, :include_blank => true %>
+        </div>
+
+        <div class="birth_date_field">
+          <%= f.label :birthday, '誕生日' %>
+          <%= raw sprintf(
+            f.date_select(
+            :birthday,
+            use_month_numbers: true,
+            start_year:        1930,
+            end_year:          (Time.now.year - 18),
+            default:           Date.new(1989, 1, 1),
+            date_separator:    '%s'),
+            '年 ', '月 ') + '日' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :message, 'つぶやき' %>
+          <%= f.text_field :message, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :comment, 'コメント' %>
+          <%= f.text_area :comment, class: 'form-control', :size=>'60x15' %>
+        </div>
+
+        <%= f.submit '登録', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

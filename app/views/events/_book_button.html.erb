@@ -1,0 +1,20 @@
+<div class="book-btn">
+  <% if @login %>
+    <% if current_user.id != @event.user_id %>
+      <% if @booked == false %>
+        <%= form_for [@event, @event.books.new], :url => new_book_path(@event), html:{method: "get"} do |f| %>
+          <%= f.text_field :event_id, class: 'hidden' %>
+          <%= f.text_field :user_id, class: 'hidden' %>
+          <%= f.submit 'イベントに参加 !!', class: 'btn btn-primary' %>
+          <%#= f.submit 'イベントに参加 !!', class: 'btn btn-primary', data: {confirm: '申請しますか?'} %>
+        <% end %>
+      <% else %>
+        <h4><label class="label label-success">参加済みです</label></h4>
+      <% end %>
+    <% else %>
+      <h4><label class="label label-success"><%= get_user_name(@event.user_id) %>さんのイベントです</label></h4>
+    <% end %>
+  <% else %>
+    <h4><label class="label label-success">ログイン後にイベントに参加申請できます</label></h4>
+  <% end %>
+</div>

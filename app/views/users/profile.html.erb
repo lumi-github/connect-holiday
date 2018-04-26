@@ -1,0 +1,22 @@
+<%= render 'layouts/navbar' %>
+<%= render 'modal' %>
+
+<div class="containerredis-server">
+
+  <% if current_user.id != @param_user_id %>
+
+    <%= render 'other_profile' %>
+
+  <% else %>
+
+    <%= render 'my_profile' %>
+
+  <% end %>
+
+</div>
+
+<script>
+  window.onload = function(){
+    $('#carousel-example-generic').carousel('pause');
+  }
+</script>

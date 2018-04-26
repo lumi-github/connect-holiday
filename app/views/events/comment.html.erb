@@ -1,0 +1,35 @@
+<%= render 'layouts/navbar' %>
+
+<div class="container">
+  <div class="col-md-3">
+    <!-- vertical-navbar -->
+    <%= render 'partial/verticalnavbar'%>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:24px;">メモの編集</span>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for @event do |f| %>
+          <div class="row">
+            <div class="col-md-12 select">
+              <div class="form-group">
+                <%= f.label :content, 'コメント' %>
+                <%= f.text_area :content, class: 'form-control', :size=>'60x15' %>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="actions">
+            <%= f.hidden_field :id, value: @event.id %>
+            <%= f.submit "更新", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>

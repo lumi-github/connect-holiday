@@ -1,0 +1,173 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-datetimepicker.min";
+@import "jquery-bootstrap-datepicker";
+@import "fullcalendar";
+@import "toastr";
+@import "users";
+@import "events";
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+}
+
+body {
+  font-size: 12px;
+ }
+
+.concept-message {
+  margin: 0 15px;
+}
+
+.concept-frame {
+   border: 1px solid #000000;
+ }
+
+
+.book-btn {
+  margin: 5px 0px;
+  text-align: center;
+}
+
+.fc-time{
+  display : none;
+}
+
+#calendar {
+  max-width: 600px;
+}
+
+#calendar_my_holiday {
+  max-height: 300px;
+  width: 100%;
+	max-width: 400px;
+}
+
+#calendar_other_holiday {
+  height: 250px;
+  width: 350px;
+	max-width: 400px;
+}
+
+.navbar-default {
+  margin: 0;
+  background: transparent;
+  border-color: transparent;
+  z-index: 10;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000000;
+  font-size: 13px;
+}
+
+.navbar-default .navbar-brand {
+  color: #000000;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+//navbar-deviseのcss
+.navbar-devise {
+  background: #fff;
+  border-color: #fff;
+  z-index: 0;
+}
+
+.navbar-devise .navbar-nav > li > a {
+  color: #222222;
+  font-size: 13px;
+}
+
+.navbar-devise .navbar-brand {
+  color: #222222;
+}
+
+// トップページのnavbarのドロップダウンがクリックされた時
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: transparent;
+  color: #555;
+}
+
+.jumbotron {
+  padding-top: 0px;
+  // 背景画像を暗くする
+  background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05) ), url(6c918fcd5419e808e482d1258cbe95c8_m.jpg);
+  background-size: cover;
+
+  // 背景画像の位置を決める
+  background-position: 50% 50%;
+  height: 380px;
+  position: relative;
+}
+
+.jumbotron .container .row{
+  margin-top: 100px;
+  color: #fff;
+}
+
+.recipe-container {
+  display: flex;
+}
+
+.panel {
+//  background-color: orange;
+}
+
+.carousel{
+   width: 300px;
+   height: 300px;
+   display: table-cell; /*上下中央*/
+   text-align: center; /*左右中央*/
+   vertical-align: middle; /*上下中央*/
+   layout-grid-line:166px; /*IE7*/
+}
+
+.carousel img{
+  width:auto;
+  height:auto;
+  max-width: 300px;
+  max-height: 300px;
+  vertical-align: middle;/*IE7*/
+}
+
+#owner-events {
+  min-height: 80px;
+  height: auto !important;
+  height: 80px;
+  overflow-y: scroll;
+}
+
+//一時的
+.bb {
+  //max-width: 50%;
+  max-height: 380px;
+  margin: 0 auto;
+  //border: 1px solid #000000;
+}
+
+.col-frame {
+  //border: 1px solid #000000;
+}
+
+// profile
+.long-text {
+  word-wrap: break-word;
+}

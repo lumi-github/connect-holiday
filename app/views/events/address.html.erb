@@ -1,0 +1,176 @@
+<%= render 'layouts/navbar' %>
+
+<h1>イベント編集</h1>
+<% if @header_prefecture %><h2><%= @header_prefecture %></h2><% end %>
+<% if @header_city %><h2><%= @header_city %></h2><% end %>
+<% if @header_category %><h2><%= @header_category %></h2><% end %>
+
+<div class="container">
+  <div class="col-md-3">
+    <!-- vertical-navbar -->
+    <%= render 'partial/verticalnavbar'%>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:24px;">住所の編集</span>
+        </div>
+      </div>
+
+      <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@event) do |f| %>
+
+      <% if @event.errors.any? %>
+        <div id="error_explanation">
+          <h2>エラー箇所の修正をお願いします。<%#= pluralize(@event.errors.count, "error") %> <!--prohibited this message from being saved:--></h2>
+
+          <ul>
+            <% @event.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+        <div class="form-group">
+          <%= f.label :prefecture_id, '都道府県' %>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,
+               {:include_blank => true, id: 'prefecture'},
+               {:onchange => "update_pref(this.value, 'event');"}
+          %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :city_id, '市町村' %>
+          <%= f.collection_select :city_id, City.all, :id, :name, :include_blank => true %>
+          <%#= collection_select :event, :city_id, City.where(prefecture_id: 1), :id, :name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :place, '開催場所' %>
+          <%= f.text_field :place, id: 'place', class: 'form-control', placeholder: "施設名を入力して下さい", :onchange => "codeAddress()"%>
+        </div>
+
+        <input type="button" value="Encode" onclick="codeAddress()">
+
+        <div id="map"></div>
+        <style>
+          #map {
+            width: 100%;
+            height: 350px;
+          }
+        </style>
+
+        <%= f.text_field :latitude, class: 'hidden' %>
+        <%= f.text_field :longitude, class: 'hidden' %>
+        <%= f.hidden_field :id, value: @event.id %>
+        <%= f.submit '更新', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+  $(function(){
+    $('#datetimepicker_start').datetimepicker({
+      closeOnDateSelect: true,
+      language: 'ja'
+    }).on('dp.error', function(e) {
+      $(e.target).val('');
+    });
+
+    $('#datetimepicker_end').datetimepicker({language: 'ja'});
+
+  });
+</script>
+
+<script>
+  var map;
+  var maker;
+
+  function initMap() {
+
+    var myLatLng = new google.maps.LatLng($('#event_latitude').val(), $('#event_longitude').val());
+    //var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+    map = new google.maps.Map(document.getElementById('map'), {
+
+      zoom: 15,
+      center: myLatLng
+
+    });
+
+    marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      draggable: true
+    });
+
+    // マーカーのドロップ（ドラッグ終了）時のイベント
+    google.maps.event.addListener(marker, 'dragend', function(ev){
+      // 緯度の軽度の取得
+      $('#event_latitude').val(ev.latLng.lat());
+      $('#event_longitude').val(ev.latLng.lng());
+    });
+
+  }
+
+  function codeAddress() {
+
+    marker.setMap(null);
+
+    var prefecture = $('#event_prefecture_id option:selected').text();
+    var city = $('#event_city_id option:selected').text();
+    var place = document.getElementById('place').value;
+    var address = prefecture + ' ' + city + ' ' + place;
+
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'address': address}, function(results, status) {
+
+      if (status == 'OK') {
+
+        map.setCenter(results[0].geometry.location);
+        marker = new google.maps.Marker({
+            map: map,
+            zoom: 15,
+            position: results[0].geometry.location,
+            center: results[0].geometry.location,
+            draggable: true
+            //label: place
+        });
+
+        $('#event_latitude').val(marker.getPosition().lat());
+        $('#event_longitude').val(marker.getPosition().lng());
+
+      	// マーカーのドロップ（ドラッグ終了）時のイベント
+      	google.maps.event.addListener(marker, 'dragend', function(ev){
+      		// 緯度の軽度の取得
+      		$('#event_latitude').val(ev.latLng.lat());
+      		$('#event_longitude').val(ev.latLng.lng());
+      	});
+
+      } else {
+        alert('地図データーはありませんでした。');
+      }
+    });
+  }
+</script>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKD-a23GSmhG_vW41sHtlZAzX_W7Hngy4&callback=initMap">
+</script>
+
+<!--<script>
+  window.onload = function() {
+    alert($('#event_city_id option:selected').val());
+    if ($('#event_city_id option:selected').val() == null)
+      update_pref($('#event_prefecture_id option:selected').val());
+    }
+  };
+</script>
+
+-->

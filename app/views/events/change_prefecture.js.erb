@@ -1,0 +1,3 @@
+<!-- console.log("view change_prefecture.js.erb enter"); -->
+<!-- console.log('<%= params[:pref_id] %>'); -->
+$('#event_city_id').html('<%= escape_javascript(render("events/change_prefecture", cities: @cities)) %>');

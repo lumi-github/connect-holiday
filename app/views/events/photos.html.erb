@@ -1,0 +1,43 @@
+<%= render 'layouts/navbar' %>
+
+<div class="container">
+  <div class="col-md-3">
+    <!-- vertical-navbar -->
+    <%= render 'partial/verticalnavbar'%>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">
+          <span style="font-size:24px;">イベント写真の編集</span>
+        </div>
+      </div>
+
+      <div class="panel-body">
+
+        <!-- アップロード可能枚数の上限-->
+        <% if @event.event_photos.count >= 3 %>
+          画像の登録は3枚まで可能です。
+        <% end %>
+
+        <% @event.event_photos.each do |photo| %>
+          <%= image_tag photo.image.url(:medium) %>
+        <% end %>
+
+        <%= form_for @event_photos, :html => { multipart: true } do |f| %>
+          <div class="fallback">
+            <%= f.file_field :image %>
+            <%= hidden_field_tag :event_id, @event.id %>
+
+            <% if @event.event_photos.count >= 3 %>
+              <%= f.submit "画像を登録", disabled: 'true' %>
+            <% else %>
+              <%= f.submit "画像を登録" %>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
