@@ -30,8 +30,6 @@ class UserPhotosController < ApplicationController
 
   def list
 
-    binding.pry
-
     user = User.find(params[:user_id])
 
     photos = []
