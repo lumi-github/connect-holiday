@@ -4,6 +4,8 @@ class UserPhoto < ApplicationRecord
 
   default_scope -> { order(priority: :desc) }
 
+  binding.pry
+
   has_attached_file :image,
                     :storage => :s3,
                     :s3_permissions => "public-read",
