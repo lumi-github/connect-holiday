@@ -16,7 +16,7 @@
 
         <!-- アップロード可能枚数の上限-->
         <% if @user.user_photos.count >= 3 %>
-          画像の登録は3枚まで可能です。
+          画像の登録は3枚まで 可能です。
         <% end %>
 
         <% @user.user_photos.each do |photo| %>
