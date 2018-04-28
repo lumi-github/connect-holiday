@@ -8,7 +8,8 @@ class UserPhoto < ApplicationRecord
                     :storage => :s3,
                     :s3_permissions => "public-read",
                     #:s3_credentials => "#{Rails.root}/config/s3.yml",
-                    :s3_credentials => File.join(Rails.root, 'config', 's3.yml'),
+                    #:s3_credentials => File.join(Rails.root, 'config', 's3.yml'),
+                    :s3_credentials => 's3.yml',
 
                     #:path => "/system/:hash.:extension",
                     :path => ":class/:id/:attachment/:style/:hash.:extension",
