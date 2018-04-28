@@ -38,7 +38,6 @@ class UsersController < ApplicationController
       #表示用データ成形
       @datas = [];
       event_datas.each do |data|
-
 #      title = 'お休み' + data['start_datetime'].hour.to_s + '時' + data['start_datetime'].min.to_s + '分' + 'fROM' + data['end_datetime'].hour.to_s + '時' + data['end_datetime'].min.to_s + '分'
         title = 'お休み'
         @datas += [
@@ -90,7 +89,6 @@ class UsersController < ApplicationController
       flash.now[:danger] = '更新されませんでした'
       render :init_profile
     end
-
   end
 
   def photos

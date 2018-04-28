@@ -23,7 +23,8 @@ class User < ApplicationRecord
   has_many :relationships
   has_many :reverse_of_relationship, class_name: 'Relationship', foreign_key: 'target_id'
 
-  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
   validates_uniqueness_of :name, :message => 'が既に登録されています。 別の名前を入力して下さい。'
 
   #validate :add_error_message
