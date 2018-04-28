@@ -37,7 +37,7 @@
             <!--<div class='indicator'></div>-->
             <div class="row">
               <div class="text-center">
-                <button class='btn btn-danger btn-wide pay-button'><%= @event.price %>円を支払って予約を完了する</button>
+                <button class='btn btn-danger btn-wide pay-button'><%= @event.price == 0 ? '無料' : @event.price %>円を支払って予約を完了する</button>
               </div>
             </div>
           <% else %>
