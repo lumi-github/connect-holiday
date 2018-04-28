@@ -19,7 +19,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 /config/secrets.yml
-/config/s3.yml
+/s3.yml
 /config/environments/development.rb
 /config/TODO
 
