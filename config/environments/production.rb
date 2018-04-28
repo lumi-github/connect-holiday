@@ -101,7 +101,7 @@ Rails.application.configure do
   # S3
   config.paperclip_defaults = {
     :storage        => 's3',
-    :bucket         => 'connect-holiday',
+    :bucket         => 'connect-holiday-production',
     :s3_region   => 'ap-northeast-1',
     :s3_permissions => 'public-read',
     :s3_host_name => 's3-ap-northeast-1.amazonaws.com',
@@ -111,5 +111,5 @@ Rails.application.configure do
       secret_access_key: ENV['aws_secret_access_key']
     }
   }
-    
+
 end
