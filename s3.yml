@@ -1,12 +1,12 @@
 development:
-  bucket: 'connect-holiday'
+  bucket: 'connect-holiday-development'
   s3_region: 'ap-northeast-1'
   access_key_id: 'AKIAIRZDHNAR5WMQMJTA'
   secret_access_key: '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'
   s3_host_name: 's3-ap-northeast-1.amazonaws.com'
 
 production:
-  bucket: 'connect-holiday'
+  bucket: 'connect-holiday-production'
   s3_region: 'ap-northeast-1'
   access_key_id: 'AKIAIRZDHNAR5WMQMJTA'
   secret_access_key: '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'
