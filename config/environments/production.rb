@@ -97,18 +97,19 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-end
 
-# S3
-config.paperclip_defaults = {
-  :storage        => 's3',
-  :bucket         => 'connect-holiday',
-  :s3_region   => 'ap-northeast-1',
-  :s3_permissions => 'public-read',
-  :s3_host_name => 's3-ap-northeast-1.amazonaws.com',
+  # S3
+  config.paperclip_defaults = {
+    :storage        => 's3',
+    :bucket         => 'connect-holiday',
+    :s3_region   => 'ap-northeast-1',
+    :s3_permissions => 'public-read',
+    :s3_host_name => 's3-ap-northeast-1.amazonaws.com',
 
-  :s3_credentials => {
-    access_key_id: ENV['aws_access_key_id'],
-    secret_access_key: ENV['aws_secret_access_key']
+    :s3_credentials => {
+      access_key_id: ENV['aws_access_key_id'],
+      secret_access_key: ENV['aws_secret_access_key']
+    }
   }
-}
+    
+end
