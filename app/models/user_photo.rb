@@ -7,7 +7,7 @@ class UserPhoto < ApplicationRecord
   has_attached_file :image,
                     :storage => :s3,
                     :s3_permissions => "public-read",
-                    :s3_credentials => "/config/s3.yml",
+                    :s3_credentials => "config/s3.yml",
                     #:s3_credentials => "#{Rails.root}/config/s3.yml",
 
                     #:path => "/system/:hash.:extension",
