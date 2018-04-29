@@ -7,7 +7,7 @@ end
 
 gem 'devise'
 gem 'omniauth-facebook'
-gem 'pry-byebug', group: :development
+gem 'pry-byebug'
 gem 'rails-i18n'
 gem 'ransack'
 gem 'jquery-ui-rails'

@@ -65,7 +65,6 @@ class BooksController < ApplicationController
       url = root_url + 'users/sign_in'
       #url = 'https://connect-holiday.herokuapp.com/users/sign_in'
 
-
       NoticePlannerMailer.delay.notice_planner_email(recipient_user_email, booked_user_name, title, url)
       #NoticePlannerMailer.notice_planner_email(recipient_user_email, booked_user_name, title, url).deliver_later
       ##############################################################################################
