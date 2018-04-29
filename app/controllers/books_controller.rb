@@ -55,7 +55,7 @@ class BooksController < ApplicationController
       end
     end
 
-    if @book.save!
+    #if @book.save!
 
       ##############################################################################################
       #並列処理に移動する
@@ -72,9 +72,9 @@ class BooksController < ApplicationController
 
       flash[:info] = 'イベントに参加申請をしました。'
       redirect_to event_path(@book.event_id)
-    else
-      render action: "show"
-    end
+    #else
+    #  render action: "show"
+    #end
   end
 
   private
