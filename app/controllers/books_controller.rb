@@ -64,6 +64,8 @@ class BooksController < ApplicationController
       title = get_event_title(@book.event_id)
       url = root_url + 'users/sign_in'
       #url = 'https://connect-holiday.herokuapp.com/users/sign_in'
+      
+      binding.pry
 
 
       NoticePlannerMailer.delay.notice_planner_email(recipient_user_email, booked_user_name, title, url)
