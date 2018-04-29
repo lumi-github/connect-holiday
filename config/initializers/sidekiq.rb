@@ -1,4 +1,5 @@
 Rails.application.config.active_job.queue_adapter = :sidekiq
+Sidekiq::Extensions.enable_delay!
 
 if Rails.env.production?
   Sidekiq.configure_server do |config|
