@@ -62,7 +62,9 @@ class BooksController < ApplicationController
       booked_user_name = get_user_name(current_user.id)
       recipient_user_email = get_user_email_by_id(current_user.id)
       title = get_event_title(@book.event_id)
-      url = root_url + 'users/sign_in'
+      #url = root_url + 'users/sign_in'
+      url = 'https://connect-holiday.herokuapp.com/users/sign_in'
+
 
       NoticePlannerMailer.delay.notice_planner_email(recipient_user_email, booked_user_name, title, url)
       #NoticePlannerMailer.notice_planner_email(recipient_user_email, booked_user_name, title, url).deliver_later
