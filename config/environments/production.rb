@@ -87,7 +87,7 @@ Rails.application.configure do
   #config.active_record.dump_schema_after_migration = false
 
   # メールの送信
-  config.action_mailer.default_url_options = { host: 'attractive.life17@gmail.com' }
+  config.action_mailer.default_url_options = { host: 'connect-holiday.herokuapp.com' }
   config.action_mailer.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
