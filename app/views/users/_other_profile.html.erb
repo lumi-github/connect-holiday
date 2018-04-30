@@ -61,7 +61,9 @@
 <!-- send message ボタン -->
 <div class="row">
   <div class="row-space-2">
-    <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post',class: "btn btn-success btn-full" %>
+    <% if !(current_user.block?(@user)) %>
+      <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post',class: "btn btn-success btn-full" %>
+    <% end %>
   </div>
 
   <div class="row-space-2">
