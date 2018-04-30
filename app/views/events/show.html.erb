@@ -86,7 +86,7 @@
   </center>
 
   <%= render 'book_button' %>
-  
+
 <!--
   <div>
     <p>イベント申し込み者リスト</p>
@@ -116,21 +116,3 @@
   </div>
 -->
 </div>
-<script>
-  function initMap() {
-    var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: myLatLng
-    });
-
-    var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      title: 'Hello World!'
-    });
-  }
-</script>
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKD-a23GSmhG_vW41sHtlZAzX_W7Hngy4&callback=initMap">
-</script>
