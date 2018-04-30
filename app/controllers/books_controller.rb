@@ -35,7 +35,7 @@ class BooksController < ApplicationController
           amount: amount,
           currency: user.currency,
           source: params[:token],
-          description: "Test Charge via Stripe Connect",
+          description: "Stripeアカウント経由でテスト支払いをして下さい。",
           application_fee: fee
         }
 
@@ -47,11 +47,11 @@ class BooksController < ApplicationController
         charge = Stripe::Charge.create( charge_attrs )
 
         #have to edit view template to show html in flash
-        flash[:notice] = "Charged successfully!"
+        flash[:notice] = "支払いが完了しました。"
 
       rescue Stripe::CardError => e
         error = e.json_body[:error][:message]
-        flash[:error] = "Charge failed! #{error}"
+        flash[:error] = "決済不可 #{error}"
       end
     end
 

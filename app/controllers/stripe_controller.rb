@@ -29,7 +29,7 @@ class StripeController < ApplicationController
       # If we have an 'error' parameter, it's because the
       # user denied the connection request. Other errors
       # are handled at #oauth_url generation time.
-      flash[:error] = "Authorization request denied."
+      flash[:error] = "認証のリクエストが拒否されました。"
     end
 
     redirect_to manage_event_bankaccount_path( session[:event_id] )
@@ -38,7 +38,7 @@ class StripeController < ApplicationController
   def deauthorize
     connector = StripeOauth.new( current_user )
     connector.deauthorize!
-    flash[:notice] = "Account disconnected from Stripe."
+    flash[:notice] = "アカウントがストライプから切断されました。"
     redirect_to manage_event_bankaccount_path( session[:event_id] )
   end
 
