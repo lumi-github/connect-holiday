@@ -101,11 +101,11 @@
         <% @event.books.each do |book| %>
           <% user = get_user(book.user_id) %>
           <tr>
-          <% if user.user_photos.first != nil %>
-            <td><%= link_to image_tag(user.user_photos.first.image.url(:thumb), { :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %></td>
-          <% else %>
-            <td><img class="follow-user-img" alt="" src=<%= "/images/no_image_user.png" %>/></td>
-          <% end %>
+            <% if user.user_photos.first != nil %>
+              <td><%= link_to image_tag(user.user_photos.first.image.url(:thumb), { :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %></td>
+            <% else %>
+              <td><img class="follow-user-img" alt="" src="/images/no_image_user.png"></td>
+            <% end %>
           </tr>
           <tr><td>user.name</td></tr>
           <tr><td><%= get_gendar(user.gender) %></td></tr>
