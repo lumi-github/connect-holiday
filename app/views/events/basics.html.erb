@@ -98,3 +98,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(function(){
+    $('#datetimepicker_start').datetimepicker({
+      closeOnDateSelect: true,
+      language: 'ja'
+    }).on('dp.error', function(e) {
+      $(e.target).val('');
+    });
+
+    $('#datetimepicker_end').datetimepicker({language: 'ja'});
+
+  });
+</script>
