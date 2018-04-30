@@ -90,28 +90,33 @@
 
   <%= render 'book_button' %>
 
-  <center>
-    <div>
-      <p>イベント申し込み者リスト</p>
-      <ul class="follow-list">
+  <div>
+    <p>イベント申し込み者リスト</p>
+    <% if @event.books %>
+      <% @event.books.each do |book| %>
+      <table class="table table-striped">
+        <tr>
+          <th class="text-left"></th>
+          <th class="text-left">ユーザー名</th>
+          <th class="text-left">性別</th>
+        </tr>
+
         <% if @event.books %>
           <% @event.books.each do |book| %>
             <% user = get_user(book.user_id) %>
+            <tr>
             <% if user.user_photos.first != nil %>
-            <li>
-              <%= link_to image_tag(user.user_photos.first.image.url(:thumb), { :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %>
-              <!--<img class="follow-user-img" alt="" src="<%= user.user_photos.first.image.url(:medium) %>" />-->
+              <td><%= link_to image_tag(user.user_photos.first.image.url(:thumb), { :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %></td>
             <% else %>
-            <li>
-              <img class="follow-user-img" alt="" src=<%= "/images/no_image_user.png" %> />
-            <% end %>
-            <div class=""><%= link_to user.name + 'さん', profile_path(user.id)%><br /></div>
-            </li>
+              <td><img class="follow-user-img" alt="" src=<%= "/images/no_image_user.png" %></td>
+            </tr>
+            <tr></td>user.name</td></tr>
+            <tr></td><%= get_gendar(user.gender) %></td></tr>
           <% end %>
         <% end %>
-      </ul>
-    </div>
-  </center>
+      </table>
+    <% end %>
+  </div>
 
 </div>
 <script>
