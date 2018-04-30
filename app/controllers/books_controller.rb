@@ -60,7 +60,7 @@ class BooksController < ApplicationController
       ##############################################################################################
       #並列処理に移動する
       booked_user_name = get_user_name(current_user.id)
-      recipient_user_email = get_user_email_by_id(current_user.id)
+      recipient_user_email = get_user_email_by_id(@event.user_id)
       title = get_event_title(@book.event_id)
       url = root_url + 'users/sign_in'
       #url = 'https://connect-holiday.herokuapp.com/users/sign_in'
