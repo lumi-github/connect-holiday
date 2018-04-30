@@ -135,7 +135,7 @@
             <td><%= link_to event.title, event_path(event.id) %></td>
             <td><%= link_to event.content, event_path(event.id) %></td></td>
             <td><%= link_to get_user_name(event.user_id), profile_path(event.user_id) %></td></td>
-            <td><%= event.start_datetime %></td>
+            <td><%= event.start_datetime.strftime("%m月%d日 %H時%M分") + ' 〜 ' + event.end_datetime.strftime("%m月%d日 %H時%M分") %></td>
           </tr>
         <% end %>
       <% end %>
