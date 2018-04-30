@@ -1,8 +1,8 @@
 <%= render 'layouts/navbar' %>
 
-<% if @header_prefecture %><h2><%= @header_prefecture %></h2><% end %>
-<% if @header_city %><h2><%= @header_city %></h2><% end %>
-<% if @header_category %><h2><%= @header_category %></h2><% end %>
+<% if @header_prefecture %><h2><%= '都道府県 : '@header_prefecture %></h2><% end %>
+<% if @header_city %><h2><%= '市町村' + @header_city %></h2><% end %>
+<% if @header_category %><h2><%= 'カテゴリー : ' @header_category %></h2><% end %>
 
 <%#= render '/layouts/search' %>
 

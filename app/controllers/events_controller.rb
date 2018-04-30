@@ -178,13 +178,13 @@ class EventsController < ApplicationController
     @event_id = params[:event_id]
     @event = Event.find(params[:event_id])
 
+    #イベント作成者
     @event_made_user = User.find(@event.user_id)
 
     # bookレコード用にデータを作成
     @book = Book.new
 
     if current_user
-
       @login = true
       @book.user_id = current_user.id
 
@@ -195,6 +195,17 @@ class EventsController < ApplicationController
     end
 
     @book.event_id = params[:event_id]
+
+    #イベント参加者がいる場合
+    #book_users = {}
+    #if @event.books.count > 0
+    #  @event.books.each do |book|
+    #    user = User.find(book.user_id)
+    #    book_users['id'] = book.user_id
+    #    book_users['name'] = user.name
+    #    if user.user_photos.first != nil book_users['photo'] = user.user_photos.first.image.url(:thumb)
+    #  end
+    #end
 
   end
 
