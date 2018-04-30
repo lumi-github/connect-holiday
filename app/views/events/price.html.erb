@@ -1,6 +1,7 @@
 <%= render 'layouts/navbar' %>
 
 <div class="container">
+  <h1>イベント名 : <%= @event.title %></h1>
   <div class="col-md-3">
     <!-- vertical-navbar -->
     <%= render 'partial/verticalnavbar'%>
@@ -13,7 +14,6 @@
         </div>
       </div>
 
-      イベント名 : <%= @event.title %>
       <div class="panel-body">
         <%= form_for @event do |f| %>
           <div class="row">

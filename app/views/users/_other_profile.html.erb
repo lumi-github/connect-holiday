@@ -59,24 +59,26 @@
 </div>
 
 <!-- send message ボタン -->
-<div class="row-space-2">
-  <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post',class: "btn btn-success btn-full" %>
-</div>
+<div class="row">
+  <div class="row-space-2">
+    <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post',class: "btn btn-success btn-full" %>
+  </div>
 
-<div class="row-space-2">
-  <% if current_user.follow?(@user) %>
-    <%= link_to "フォローを解除", users_unfollow_path(@user.id), method: 'delete', class: "btn btn-success btn-full" %>
-  <% else %>
-    <%= link_to "フォローする", users_follow_path(@user.id), method: 'get', class: "btn btn-success btn-full" %>
-  <% end %>
-</div>
+  <div class="row-space-2">
+    <% if current_user.follow?(@user) %>
+      <%= link_to "フォローを解除", users_unfollow_path(@user.id), method: 'delete', class: "btn btn-success btn-full" %>
+    <% else %>
+      <%= link_to "フォローする", users_follow_path(@user.id), method: 'get', class: "btn btn-success btn-full" %>
+    <% end %>
+  </div>
 
-<div class="row-space-2">
-  <% if current_user.block?(@user) %>
-    <%= link_to "ブロックを解除", users_unblock_path(@user.id), method: 'delete', class: "btn btn-success btn-full" %>
-  <% else %>
-    <%= link_to "ブロックする", users_block_path(@user.id), method: 'get', class: "btn btn-success btn-full" %>
-  <% end %>
+  <div class="row-space-2">
+    <% if current_user.block?(@user) %>
+      <%= link_to "ブロックを解除", users_unblock_path(@user.id), method: 'delete', class: "btn btn-success btn-full" %>
+    <% else %>
+      <%= link_to "ブロックする", users_block_path(@user.id), method: 'get', class: "btn btn-success btn-full" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="row">

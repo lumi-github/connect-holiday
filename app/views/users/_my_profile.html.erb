@@ -100,7 +100,6 @@
       <table class="table table-striped">
         <tr>
           <th class="text-left">タイトル</th>
-          <th class="text-left">作成者</th>
           <th class="text-left">日付</th>
           <th class="text-left">状態</th>
         </tr>
@@ -109,7 +108,6 @@
         <% @my_events.each do |event| %>
           <tr>
             <td><%= link_to event.title, event_path(event.id) %></td>
-            <td><%= link_to get_user_name(event.user_id), profile_path(event.user_id) %></td></td>
             <td><%= event.start_datetime %></td>
             <td>
               <% if event.state == false %>
