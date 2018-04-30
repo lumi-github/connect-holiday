@@ -108,7 +108,7 @@
         <% @my_events.each do |event| %>
           <tr>
             <td><%= link_to event.title, event_path(event.id) %></td>
-            <td><%= event.start_datetime %></td>
+            <td><%= event.start_datetime.strftime("%m月%d日 %H時%M分") + ' 〜 ' + event.end_datetime.strftime("%m月%d日 %H時%M分") %></td>
             <td>
               <% if event.state == false %>
                 <%= link_to '編集する', manage_event_basics_path(event.id), class: 'btn btn-danger' %>
