@@ -53,6 +53,7 @@
 
   <%= render 'book_button' %>
 
+<!--
   <div class="row">
     <div class="col-md-12">
       <table class="table">
@@ -69,7 +70,7 @@
     <div class="col-md-6"><p>メモ</p><%= simple_format(@event.content) %></div>
     <div class="col-md-6"><p>イベント開催場所 : <%= @event.place %></p><div id="map"></div></div>
   </div>
-
+-->
   <style>
     #map {
       width: 100%;
@@ -77,6 +78,7 @@
     }
   </style>
 
+<!--
   <center>
   <% if @event.movie != nil && @event.movie != '' %>
     <div class="event-movie">
@@ -84,7 +86,7 @@
     </div>
   <% end %>
   </center>
-
+-->
   <%= render 'book_button' %>
 
 <!--
@@ -116,3 +118,21 @@
   </div>
 -->
 </div>
+<script>
+  function initMap() {
+    var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKD-a23GSmhG_vW41sHtlZAzX_W7Hngy4&callback=initMap">
+</script>
