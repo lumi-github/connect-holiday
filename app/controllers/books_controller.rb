@@ -55,7 +55,7 @@ class BooksController < ApplicationController
       end
     end
 
-    #if @book.save!
+    if @book.save!
 
       ##############################################################################################
       #並列処理に移動する
@@ -63,7 +63,6 @@ class BooksController < ApplicationController
       recipient_user_email = get_user_email_by_id(@event.user_id)
       title = get_event_title(@book.event_id)
       url = root_url + 'users/sign_in'
-      #url = 'https://connect-holiday.herokuapp.com/users/sign_in'
 
       NoticePlannerMailer.delay.notice_planner_email(recipient_user_email, booked_user_name, title, url)
       #NoticePlannerMailer.notice_planner_email(recipient_user_email, booked_user_name, title, url).deliver_later
@@ -71,9 +70,9 @@ class BooksController < ApplicationController
 
       flash[:info] = 'イベントに参加申請をしました。'
       redirect_to event_path(@book.event_id)
-    #else
-    #  render action: "show"
-    #end
+    else
+      render action: "show"
+    end
   end
 
   private

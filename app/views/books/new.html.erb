@@ -14,7 +14,7 @@
         <h4 class="text-center row-space-4">ホスト名 : <%= @event.user.name %></h4>
         <h4 class="text-center row-space-4">タイトル : <%= @event.title %></h4>
 
-        <h4 class="text-center row-space-4">参加費用 : <%= @event.price == 0 ? '無料' : @event.price + '円' %></h4>
+        <h4 class="text-center row-space-4">参加費用 : <%= @event.price == 0 ? '無料' : @event.price.to_s + '円' %></h4>
         <div class="row text-center">
           <div class="col-md-2 col-sm-2 col-xs-2 row-space-top-1">
             <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
