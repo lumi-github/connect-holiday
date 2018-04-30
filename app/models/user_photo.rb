@@ -25,7 +25,7 @@ class UserPhoto < ApplicationRecord
                     validates_attachment :image, presence: true,
 
                     #content_type: { content_type: "image/jpeg" },
-                    size: { in: 0..2000.kilobytes }
+                    size: { in: 0..5000.kilobytes }
 
   do_not_validate_attachment_file_type :image
 
