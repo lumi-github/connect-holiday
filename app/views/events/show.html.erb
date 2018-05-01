@@ -87,7 +87,33 @@
 
   <%= render 'book_button' %>
 
+
+  <% if current_user.id == @event.user_id %>
+    <div>
+      <p>イベント申し込み者リスト</p>
+      <% if @event.books.count > 0 %>
+        <table class="table table-striped">
+          <tr>
+            <th class="text-left">ユーザー名</th>
+            <th class="text-left">性別</th>
+          </tr>
+
+          <% @event.books.each do |book| %>
+            <% user = get_user(book.user_id) %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= get_gendar(user.gender) %></td>
+          </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <p><center>申込みはまだありません。</center></p>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>
+
 <script>
   function initMap() {
     var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
