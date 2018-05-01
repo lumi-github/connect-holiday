@@ -7,6 +7,7 @@
 @import "toastr";
 @import "users";
 @import "events";
+@import "toppages";
 
 @media (min-width: 768px) {
   .container {
@@ -32,6 +33,8 @@ body {
 
 .concept-message {
   margin: 0 15px;
+  font-size: 15px;
+  text-align: center;
 }
 
 .concept-frame {
