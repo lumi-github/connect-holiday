@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#concept {
+  text-align: center;
+  margin: 0 0 15px 0;
+  border-top: solid 3px #FFA500;/*上線*/
+  border-bottom: solid 3px #FFA500;/*下線*/
+}
+
 .main-image {
   padding: 50px 0 0 0;
 }
