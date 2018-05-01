@@ -3,7 +3,7 @@
 <%# end %>
 
 <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-4 bb">
+  <div class="col-xs-12 col-sm-4 col-md-4">
     <%= link_to 'プロフィール画像登録', manage_user_photos_path(@user) %>
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -37,12 +37,12 @@
 
   </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-4 bb">
+  <div class="col-xs-12 col-sm-3 col-md-4">
     <h3>つぶやき</h3>
     <%= @user.message %>
   </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-4 bb">
+  <div class="col-xs-12 col-sm-5 col-md-4">
     <!-- カレンダー表示 -->
     <center><%= @user.name %>さんの休みカレンダー<br /></cener>
     <%= javascript_tag do %>
