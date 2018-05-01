@@ -101,7 +101,7 @@
           <% @event.books.each do |book| %>
             <% user = get_user(book.user_id) %>
           <tr>
-            <td><%= user.name %></td>
+            <td><%= link_to user.name, profile_path(book.user_id) %></td>
             <td><%= get_gendar(user.gender) %></td>
           </tr>
           <% end %>
