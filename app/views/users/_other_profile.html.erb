@@ -3,8 +3,8 @@
 <%# end %>
 
 <div class="row">
-  <div class="col-md-4 bb">
-
+  <div class="work">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-4 bb">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -36,7 +36,7 @@
 
   </div>
 
-  <div class="col-md-4 bb">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-4 bb">
     <table class="table">
       <tr><td>ユーザー名:</td><td><%= @user.name %></td></tr>
       <tr><td>性別:</td><td><%= get_gendar(@user.gender) %></td></tr>
@@ -46,7 +46,7 @@
     </table>
   </div>
 
-  <div class="col-md-4 bb">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-4 bb">
     <!-- カレンダー表示 -->
     <center><%= @user.name %>さんの休みカレンダー<br /></cener>
     <%= javascript_tag do %>
@@ -56,30 +56,35 @@
     <div id="calendar_other_holiday"></div>
 
   </div>
+  </div>
 </div>
 
+<br><br>
+
 <!-- send message ボタン -->
-<div class="row">
-  <div class="row-space-2">
-    <% if !(current_user.block?(@user)) %>
-      <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post',class: "btn btn-success btn-full" %>
-    <% end %>
-  </div>
+<div class="action-btn">
+  <div class="row">
+    <div class="col-xs-6 col-sm-3 col-md-3">
+      <% if !(current_user.block?(@user)) %>
+        <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post',class: "btn btn-success btn-full" %>
+      <% end %>
+    </div>
 
-  <div class="row-space-2">
-    <% if current_user.follow?(@user) %>
-      <%= link_to "フォローを解除", users_unfollow_path(@user.id), method: 'delete', class: "btn btn-success btn-full" %>
-    <% else %>
-      <%= link_to "フォローする", users_follow_path(@user.id), method: 'get', class: "btn btn-success btn-full" %>
-    <% end %>
-  </div>
+    <div class="col-xs-3 col-sm-2 col-md-2">
+      <% if current_user.follow?(@user) %>
+        <%= link_to "フォローを解除", users_unfollow_path(@user.id), method: 'delete', class: "btn btn-success btn-full" %>
+      <% else %>
+        <%= link_to "フォローする", users_follow_path(@user.id), method: 'get', class: "btn btn-success btn-full" %>
+      <% end %>
+    </div>
 
-  <div class="row-space-2">
-    <% if current_user.block?(@user) %>
-      <%= link_to "ブロックを解除", users_unblock_path(@user.id), method: 'delete', class: "btn btn-success btn-full" %>
-    <% else %>
-      <%= link_to "ブロックする", users_block_path(@user.id), method: 'get', class: "btn btn-success btn-full" %>
-    <% end %>
+    <div class="col-xs-3 col-sm-2 col-md-2">
+      <% if current_user.block?(@user) %>
+        <%= link_to "ブロックを解除", users_unblock_path(@user.id), method: 'delete', class: "btn btn-success btn-full" %>
+      <% else %>
+        <%= link_to "ブロックする", users_block_path(@user.id), method: 'get', class: "btn btn-success btn-full" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
