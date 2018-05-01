@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="work">
-  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-4 bb">
+  <div class="col-xs-4 col-sm-4 col-md-4 bb">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -36,7 +36,7 @@
 
   </div>
 
-  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-4 bb">
+  <div class="col-xs-4 col-sm-4 col-md-4 bb">
     <table class="table">
       <tr><td>ユーザー名:</td><td><%= @user.name %></td></tr>
       <tr><td>性別:</td><td><%= get_gendar(@user.gender) %></td></tr>
@@ -46,7 +46,7 @@
     </table>
   </div>
 
-  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-4 bb">
+  <div class="col-xs-4 col-sm-4 col-md-4 bb">
     <!-- カレンダー表示 -->
     <center><%= @user.name %>さんの休みカレンダー<br /></cener>
     <%= javascript_tag do %>
@@ -58,8 +58,6 @@
   </div>
   </div>
 </div>
-
-<br><br>
 
 <!-- send message ボタン -->
 <div class="action-btn">
