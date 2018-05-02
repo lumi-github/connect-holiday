@@ -1,4 +1,8 @@
 Rails.application.configure do
+
+  #GA.tracker = ENV['GOOGLE_TRACKING_ID']
+  GA.tracker = 'UA-118663554-1'
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
