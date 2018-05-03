@@ -229,7 +229,15 @@ class EventsController < ApplicationController
     action = Rails.application.routes.recognize_path(request.referer)[:action]
 
     #publishから遷移した場合は公開に設定
-    @event.state = true if action == 'publish'
+    if action == 'publish'
+      #受取口座を指定していない場合はbankaccountに移動
+      if current_user.stripe_user_id == nil
+        flash[:info] = '公開の前に受取口座を設定して下さい。'
+        redirect_to manage_event_bankaccount_path(params[:event_id]) and return
+      else
+        @event.state = true
+      end
+    end
 
     if @event.update(event_params)
 

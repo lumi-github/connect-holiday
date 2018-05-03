@@ -92,6 +92,7 @@
     <div>
       <p>イベント申し込み者リスト</p>
       <% if @event.books.count > 0 %>
+        <%= 'イベント申し込み者数:' + @event.books.count.to_s %>
         <table class="table table-striped">
           <tr>
             <th class="text-left">ユーザー名</th>
