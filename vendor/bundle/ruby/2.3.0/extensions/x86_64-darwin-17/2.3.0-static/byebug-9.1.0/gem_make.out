@@ -1,0 +1,19 @@
+current directory: /Users/attractivelife/Desktop/workspace_new/connect-holiday/vendor/bundle/ruby/2.3.0/gems/byebug-9.1.0/ext/byebug
+/Users/attractivelife/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20180503-40902-8ymcmy.rb extconf.rb
+creating Makefile
+
+current directory: /Users/attractivelife/Desktop/workspace_new/connect-holiday/vendor/bundle/ruby/2.3.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/attractivelife/Desktop/workspace_new/connect-holiday/vendor/bundle/ruby/2.3.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR="
+compiling locker.c
+compiling byebug.c
+compiling context.c
+compiling breakpoint.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/attractivelife/Desktop/workspace_new/connect-holiday/vendor/bundle/ruby/2.3.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20180503-40902-wf5rkr/byebug

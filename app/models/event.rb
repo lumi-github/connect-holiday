@@ -16,6 +16,11 @@ class Event < ApplicationRecord
   #validates :start_datetime, presence: true
   #validates :end_datetime, presence: true
 
+  def event_mail
+    binding.pry
+    NoticePlannerMailer.delay.notice_planner_email('lumi.xperia@gmail.com', 'test', 'cron-test', 'https://yahoo.co.jp')
+  end
+
   validate :event_date
   def event_date
     if !start_datetime.present?

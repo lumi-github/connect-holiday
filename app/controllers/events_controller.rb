@@ -296,6 +296,11 @@ class EventsController < ApplicationController
   def publish
   end
 
+  #def event_mail
+  #  binding.pry
+  #  NoticePlannerMailer.delay.notice_planner_email('lumi.xperia@gmail.com', 'test', 'cron-test', 'https://yahoo.co.jp')
+  #end
+
   private
 
   # Eventレコード作成
