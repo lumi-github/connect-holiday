@@ -17,7 +17,6 @@ class Event < ApplicationRecord
   #validates :end_datetime, presence: true
 
   def event_mail
-    binding.pry
     NoticePlannerMailer.delay.notice_planner_email('lumi.xperia@gmail.com', 'test', 'cron-test', 'https://yahoo.co.jp')
   end
 
