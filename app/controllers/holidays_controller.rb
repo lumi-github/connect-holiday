@@ -25,7 +25,7 @@ class HolidaysController < ApplicationController
 
     @holiday = current_user.holidays.build(holiday_params)
 
-    flash[:info] = tmp_start_date
+    flash[:info] = params[:holiday][:start_datetime]
 
 
 =begin
