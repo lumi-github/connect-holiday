@@ -25,6 +25,10 @@ class HolidaysController < ApplicationController
 
     @holiday = current_user.holidays.build(holiday_params)
 
+    flash[:info] = tmp_start_date
+
+
+=begin
     if @holiday.save
 #      Time.zone = 'UTC'
       flash[:info] = '休みを追加しました。'
@@ -34,7 +38,7 @@ class HolidaysController < ApplicationController
       flash[:alert] = '休みを追加出来ませんでした。'
 #      redirect_to event_path(event_id)
     end
-
+=end
   end
 
   private
