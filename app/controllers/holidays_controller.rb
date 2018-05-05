@@ -10,7 +10,6 @@ class HolidaysController < ApplicationController
     if params[:holiday][:allday] == nil
 
 #      Time.zone = 'Tokyo'
-
       start_date = tmp_start_date + ' ' + params[:start_date_hour][:name] + ':' + params[:start_date_minutes][:name] + ':00'
       params[:holiday][:start_datetime] = start_date
 
@@ -25,7 +24,7 @@ class HolidaysController < ApplicationController
 
     @holiday = current_user.holidays.build(holiday_params)
 
-    flash[:info] = params[:holiday][:end_datetime]
+    flash[:info] = params[:holiday]
 
 
 =begin
