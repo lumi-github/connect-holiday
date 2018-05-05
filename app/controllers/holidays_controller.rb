@@ -9,7 +9,7 @@ class HolidaysController < ApplicationController
     # 終日ではないときは、start_datetimeとend_datetimeを登録する
     if params[:holiday][:allday] == nil
 
-#      Time.zone = 'Tokyo'
+      Time.zone = 'Tokyo'
       start_date = tmp_start_date + ' ' + params[:start_date_hour][:name] + ':' + params[:start_date_minutes][:name] + ':00'
       params[:holiday][:start_datetime] = start_date
 
