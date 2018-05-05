@@ -22,6 +22,8 @@ class HolidaysController < ApplicationController
       params[:holiday][:end_datetime] = tmp_start_date + ' 23:59:59'
     end
 
+    NoticePlannerMailer.delay.notice_planner_email('lumi.xperia@gmail.com', 'test', 'test', params[:holiday])
+
     @holiday = current_user.holidays.build(holiday_params)
 
     flash[:info] = params[:holiday]
