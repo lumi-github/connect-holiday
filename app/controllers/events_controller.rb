@@ -122,8 +122,8 @@ class EventsController < ApplicationController
 
         @datas += [
           'title' => data['title'],
-          'start' => data['start_datetime'],
-          'end'   => data['end_datetime'],
+          'start' => data['start_datetime'].in_time_zone('Tokyo'),
+          'end'   => data['end_datetime'].in_time_zone('Tokyo'),
           'detail'=> data['content'],
           'url'=> show_page_url,
           'color' => 'orange'
