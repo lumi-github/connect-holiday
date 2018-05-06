@@ -42,8 +42,8 @@ class UsersController < ApplicationController
         title = 'お休み'
         @datas += [
           'title' => title,
-          'start' => data['start_datetime'].in_time_zone('Tokyo'),
-          'end'   => data['end_datetime'].in_time_zone('Tokyo'),
+          'start' => data['start_datetime'],
+          'end'   => data['end_datetime'],
           'color' => 'orange'
         ]
       end
