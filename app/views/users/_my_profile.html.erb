@@ -57,17 +57,17 @@
 
 <div class="row">
   <div class="col-md-3 col-sm-3 col-frame">
-    <h3>フォローユーザー</h3>
+    <h4>フォローユーザー</h4>
     <ul class="follow-list">
       <% if current_user.follow_users %>
         <% current_user.follow_users.each do |user| %>
           <% if user.user_photos.first != nil %>
           <li>
-            <%= link_to image_tag(user.user_photos.first.image.url(:thumb), { :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %>
+            <%= link_to image_tag(user.user_photos.first.image.url(:thumb), { :class => 'follow-user-img', :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %>
             <!--<img class="follow-user-img" alt="" src="<%= user.user_photos.first.image.url(:medium) %>" />-->
           <% else %>
           <li>
-            <%= link_to image_tag("/images/no_image_user.png", { :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %>
+            <%= link_to image_tag("/images/no_image_user.png", { :class => 'follow-user-img', :border => '0', :alt => 'ユーザー画像'}), profile_path(user.id) %>
           <% end %>
           <div class=""><%= link_to user.name + 'さん', profile_path(user.id)%><br /></div>
           </li>
