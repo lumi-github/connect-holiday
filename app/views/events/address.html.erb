@@ -44,7 +44,7 @@
 
         <div class="form-group">
           <%= f.label :city_id, '市町村' %>
-          <%= f.collection_select :city_id, City.all, :id, :name, :include_blank => true %>
+          <%= f.collection_select :city_id, @cities, :id, :name, :include_blank => true %>
           <%#= collection_select :event, :city_id, City.where(prefecture_id: 1), :id, :name %>
         </div>
 

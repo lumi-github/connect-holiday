@@ -276,6 +276,7 @@ class EventsController < ApplicationController
   end
 
   def address
+    @cities = City.where(prefecture_id: @event.prefecture_id)
   end
 
   def price
