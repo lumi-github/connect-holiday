@@ -18,9 +18,9 @@ class EventsController < ApplicationController
     @categories = Category.all
 
     #ヘッダー
-    @header_prefecture = ""
-    @header_city = ""
-    @header_category = ""
+    @header_prefecture
+    @header_city
+    @header_category
 
     #params
     @pref_id = params[:pref_id]
