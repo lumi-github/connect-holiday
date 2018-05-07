@@ -66,8 +66,24 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6"><p>メモ</p><%= simple_format(@event.content) %></div>
-    <div class="col-md-6"><p>イベント開催場所 : <%= @event.place %></p><div id="map"></div></div>
+    <div class="panel panel-default col-md-6">
+      <div class="panel-heading text-center">
+        メモ
+      </div>
+      <div class="panel-body">
+        <%= simple_format(@event.content) %>
+      </div>
+    </div>
+
+    <div class="panel panel-default col-md-6">
+      <div class="panel-heading text-center">
+        イベント開催場所 : <%= @event.place %>
+      </div>
+      <div class="panel-body">
+        <div id="map">
+      </div>
+    </div>
+
   </div>
 
   <style>
@@ -87,32 +103,36 @@
 
   <%= render 'book_button' %>
 
-
   <% if current_user != nil && current_user.id == @event.user_id %>
-    <div>
-      <p>イベント申し込み者リスト</p>
+
+    <div class="panel panel-default col-md-12">
+      <div class="panel-heading text-center">
+        イベント申し込み者リスト
+      </div>
       <% if @event.books.count > 0 %>
         <%= 'イベント申し込み者数:' + @event.books.count.to_s %>
+      <div class="panel-body">
         <table class="table table-striped">
           <tr>
             <th class="text-left">ユーザー名</th>
             <th class="text-left">性別</th>
           </tr>
 
-          <% @event.books.each do |book| %>
-            <% user = get_user(book.user_id) %>
+        <% @event.books.each do |book| %>
+          <% user = get_user(book.user_id) %>
           <tr>
             <td><%= link_to user.name, profile_path(book.user_id) %></td>
             <td><%= get_gendar(user.gender) %></td>
           </tr>
-          <% end %>
+        <% end %>
         </table>
+      </div>
       <% else %>
         <p><center>申込みはまだありません。</center></p>
       <% end %>
     </div>
+  </div>
   <% end %>
-
 </div>
 
 <script>
