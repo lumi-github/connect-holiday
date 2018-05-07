@@ -54,17 +54,23 @@
   <%= render 'book_button' %>
 
   <div class="row">
-    <div class="col-md-12">
-      <table class="table">
-        <tr><td>都道府県:</td><td><%= get_prefecture_name(@event.prefecture_id) %></td></tr>
-        <tr><td>市町村:</td><td><%= get_city_name(@event.city_id) %></td></tr>
-        <tr><td>イベント開催時刻:</td><td><%= @event.start_datetime.strftime("%Y年%m月%d日 %H時%M分") %> 〜 <%= @event.end_datetime.strftime("%Y年%m月%d日 %H時%M分") %></td><tr>
-        <tr><td>募集人数:</td><td><%= @event.accept_user_limit %></td><tr>
-        <tr><td>参加費:</td><td><%= jpy_comma(@event.price) %></td><tr>
-        <tr><td>ハッシュタグ:</td><td><% @event.hash_tag %></td><tr>
-      </table>
+    <div class="panel panel-default col-md-12">
+      <div class="panel-heading text-center">
+        イベント情報
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <tr><td>都道府県:</td><td><%= get_prefecture_name(@event.prefecture_id) %></td></tr>
+          <tr><td>市町村:</td><td><%= get_city_name(@event.city_id) %></td></tr>
+          <tr><td>イベント開催時刻:</td><td><%= @event.start_datetime.strftime("%Y年%m月%d日 %H時%M分") %> 〜 <%= @event.end_datetime.strftime("%Y年%m月%d日 %H時%M分") %></td><tr>
+          <tr><td>参加人数 / 募集人数:</td><td><%= @booked_user_count.to_s + ' / ' +  @event.accept_user_limit.to_s %></td><tr>
+          <tr><td>参加費:</td><td><%= jpy_comma(@event.price) %></td><tr>
+          <tr><td>ハッシュタグ:</td><td><% @event.hash_tag %></td><tr>
+        </table>
+      </div>
     </div>
   </div>
+  
   <div class="row">
     <div class="panel panel-default col-md-6">
       <div class="panel-heading text-center">

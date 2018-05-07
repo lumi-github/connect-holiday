@@ -196,6 +196,10 @@ class EventsController < ApplicationController
 
     @book.event_id = params[:event_id]
 
+    #このイベントを予約している人数を取得
+    @event_accept_user_limit = @event.accept_user_limit
+    @booked_user_count = @event.books.count
+
     #イベント参加者がいる場合
     #book_users = {}
     #if @event.books.count > 0
