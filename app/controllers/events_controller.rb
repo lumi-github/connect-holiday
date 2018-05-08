@@ -274,6 +274,8 @@ class EventsController < ApplicationController
   end
 
   def basics
+    @event.start_datetime = @event.start_datetime.strftime("%Y-%m-%d %H:%M")
+    @event.end_datetime = @event.end_datetime.strftime("%Y-%m-%d %H:%M")
   end
 
   def comment
