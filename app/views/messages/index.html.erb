@@ -5,7 +5,6 @@
       <%#= image_tag @other.image, class: "img-circle profile-1" %><br>
       <% if @other.user_photos.first != nil %>
       <%= link_to image_tag(@other.user_photos.first.image.url(:thumb), { :border => '0', :alt => 'ユーザー画像'}), profile_path(@other.id) %>
-        <!--<img class="follow-user-img" alt="" src="<%= user.user_photos.first.image.url(:medium) %>" />-->
       <% else %>
         <%= link_to image_tag("/images/no_image_user.png", { :class => 'follow-user-img', :border => '0', :alt => 'ユーザー画像'}), profile_path(@other.id) %>
       <% end %>

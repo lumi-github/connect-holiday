@@ -5,10 +5,9 @@ class MessageMailer < ApplicationMailer
 
   def message_email(recipient_user_email, sender_user_name, url)
 
-    title = "#{sender_user_name}さんから新着メッセージが届いています!"
+    title = "新着メッセージが届いています!"
 #    @recipient_user = recipient_user
-    @sender_user_name = sender_user_name
-
+    @content = "#{sender_user_name}さんから新着メッセージが届いています。"
     # urlは「root_path + 'users/sign_in'」のURL
     @url = url
 

@@ -7,7 +7,7 @@ class NoticePlannerMailer < ApplicationMailer
 
     title = "#{booked_user_name}さんからイベントの参加申請を受けました！"
 #    @recipient_user_email = recipient_user_email
-    @booked_user_name = booked_user_name
+    @content = booked_user_name + "さんからイベント名「#{event_title}」の参加申請が届きました。"
     @url = url
 
     mail to: recipient_user_email, subject: title
